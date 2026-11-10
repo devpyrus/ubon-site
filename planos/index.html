@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planos do Ubon Pro | Ubon</title>
+  <meta name="description" content="Ubon Pro por 12 meses (R$ 99,99) ou 6 meses (R$ 57,99), com pagamento único no Pix ou no cartão.">
+  <link rel="canonical" href="https://ubon.pro/planos/">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Ubon">
+  <meta property="og:title" content="Planos do Ubon Pro | Ubon">
+  <meta property="og:description" content="Ubon Pro por 12 meses (R$ 99,99) ou 6 meses (R$ 57,99), com pagamento único no Pix ou no cartão.">
+  <meta property="og:url" content="https://ubon.pro/planos/">
+  <meta property="og:image" content="https://ubon.pro/assets/compartilhar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/icone-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icone-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icone-180.png">
+  <link rel="preload" href="/assets/fontes/roboto-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fontes/roboto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/estilo.css">
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Ubon, página inicial"><img src="/assets/ubon-logo.png" alt="Ubon" width="192" height="96"></a>
+      <nav class="menu" aria-label="Principal">
+        <a class="so-no-largo" href="/#como-funciona">Como funciona</a>
+        <a class="so-no-largo" href="/#recursos">Recursos</a>
+        <a class="so-no-largo" href="/#duvidas">Dúvidas</a>
+        <a href="/planos/" aria-current="page">Planos</a>
+        <a class="botao botao-principal botao-pequeno" href="/baixar/">Baixar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="container">
+      <header class="pagina-topo">
+        <h1>Planos do Ubon Pro</h1>
+        <p class="lead">O Pro liga o copiloto: o card por cima da oferta da Uber e da 99, com o Semáforo de Valores e a voz. Finanças, Jornada, abastecimentos e manutenção continuam grátis.</p>
+      </header>
+
+      <form class="compra" id="comprar" method="post" action="/api/comprar" novalidate>
+        <div class="caixa conta">
+          <h2>Primeiro, o código da sua conta</h2>
+          <p>No Ubon, vá em <strong>Conta → Ubon Pro</strong> e toque no botão de copiar ao lado de <strong>Código da conta</strong>. Depois, cole aqui. É por ele que o Pro chega na sua conta.</p>
+          <label class="rotulo-do-campo" for="codigo">Código da conta</label>
+          <input class="campo" id="codigo" name="codigo" type="text" required autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="60" placeholder="Cole o código aqui" aria-describedby="aviso-da-compra">
+          <label class="rotulo-do-campo" for="email">Seu e-mail, pra receber o comprovante (se quiser)</label>
+          <input class="campo" id="email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="voce@gmail.com">
+          <p class="aviso-do-formulario" id="aviso-da-compra" role="alert" hidden></p>
+          <p class="pequeno">Ainda não tem o Ubon? <a href="/baixar/">Veja como baixar</a> e entre com o seu Gmail: o código aparece logo depois.</p>
+        </div>
+
+        <h2 class="so-leitor">Depois, escolha o plano</h2>
+        <div class="planos">
+          <article class="plano destaque" aria-labelledby="plano-12">
+            <span class="etiqueta">Sai mais em conta</span>
+            <h3 id="plano-12">12 meses</h3>
+            <p class="preco"><small>R$</small>99,99</p>
+            <p class="por-mes">R$&nbsp;8,33 por mês</p>
+            <p class="condicoes">Pagamento único, no Pix ou no cartão. Não renova sozinho.</p>
+            <button class="botao botao-principal" type="submit" name="plano" value="anual">Comprar 12 meses</button>
+          </article>
+          <article class="plano" aria-labelledby="plano-6">
+            <h3 id="plano-6">6 meses</h3>
+            <p class="preco"><small>R$</small>57,99</p>
+            <p class="por-mes">R$&nbsp;9,67 por mês</p>
+            <p class="condicoes">Pagamento único, no Pix ou no cartão. Não renova sozinho.</p>
+            <button class="botao botao-secundario" type="submit" name="plano" value="semestral">Comprar 6 meses</button>
+          </article>
+        </div>
+        <div class="plano-de-teste" hidden>
+          <button class="botao botao-secundario" type="submit" name="plano" value="teste">Teste: R$ 1,00 (1 dia de Pro)</button>
+        </div>
+      </form>
+
+      <div class="inclui">
+        <h2 class="so-leitor">O que vem nos dois planos</h2>
+        <ul class="lista-com-marcas em-colunas">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>O card por cima da oferta da Uber e da 99</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>R$&nbsp;por km, R$&nbsp;por hora e nota do passageiro</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Semáforo com os seus limites</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A voz que fala a oferta, se você quiser</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Histórico das ofertas lidas</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Corridas aceitas direto em Finanças</li>
+        </ul>
+      </div>
+
+      <section class="bloco" aria-labelledby="titulo-como-chega">
+        <h2 id="titulo-como-chega">Como o Pro chega no seu celular</h2>
+        <ol class="passos">
+          <li>
+            <h3>Instale o Ubon e entre com o seu Gmail</h3>
+            <p>Se ainda não instalou, <a href="/baixar/">veja como baixar</a>.</p>
+          </li>
+          <li>
+            <h3>Copie o código da conta</h3>
+            <p>No Ubon, em Conta → Ubon Pro, toque no botão de copiar ao lado de Código da conta.</p>
+          </li>
+          <li>
+            <h3>Cole aqui e pague</h3>
+            <p>Escolha o plano e pague no Pix ou no cartão. O pagamento é feito na InfinitePay.</p>
+          </li>
+          <li>
+            <h3>Pronto</h3>
+            <p>O Pro é liberado sozinho, em geral na hora. Abra o Ubon (se ele já estava aberto, feche e abra de novo) e ligue o Copiloto Inteligente.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="bloco caixas" aria-label="Outras informações">
+        <div class="caixa">
+          <h2>O Pro não apareceu?</h2>
+          <p>Feche o Ubon e abra de novo. Se em 30 minutos ainda não aparecer em Conta → Ubon Pro, mande o comprovante e o código da conta pra <a href="mailto:suporte.ubon@gmail.com">suporte.ubon@gmail.com</a>.</p>
+        </div>
+        <div class="caixa">
+          <h2>Ainda tem Pro e comprou de novo?</h2>
+          <p>O período novo é somado ao que falta: ninguém perde dias.</p>
+        </div>
+        <div class="caixa">
+          <h2>Mudou de ideia?</h2>
+          <p>Você tem 7 dias, contados da compra, pra desistir e receber todo o dinheiro de volta. É só escrever pra <a href="mailto:suporte.ubon@gmail.com">suporte.ubon@gmail.com</a>.</p>
+        </div>
+        <div class="caixa">
+          <h2>E quando o Ubon chegar na Play Store?</h2>
+          <p>O seu plano continua valendo até o fim, na mesma conta.</p>
+        </div>
+      </section>
+
+      <p class="nota-final">Ao comprar, você concorda com os <a href="/termos-de-uso/">Termos de uso</a> e com a <a href="/politica-de-privacidade/">Política de privacidade</a>.</p>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <div class="colunas">
+        <div>
+          <a class="logo" href="/" aria-label="Ubon, página inicial"><img src="/assets/ubon-logo.png" alt="Ubon" width="192" height="96"></a>
+          <p class="aviso-de-marca">O Ubon não tem ligação com a Uber nem com a 99. Os nomes Uber e 99 são marcas dos seus donos e aparecem aqui só pra dizer com quais apps o Ubon funciona.</p>
+        </div>
+        <nav aria-labelledby="rodape-ubon">
+          <h2 id="rodape-ubon">Ubon</h2>
+          <ul>
+            <li><a href="/baixar/">Baixar</a></li>
+            <li><a href="/planos/">Planos</a></li>
+            <li><a href="/#duvidas">Dúvidas</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="rodape-ajuda">
+          <h2 id="rodape-ajuda">Ajuda</h2>
+          <ul>
+            <li><a href="mailto:suporte.ubon@gmail.com">suporte.ubon@gmail.com</a></li>
+            <li><a href="https://ig.me/m/ubon.pro" rel="noopener">Mensagem no Instagram</a></li>
+            <li><a href="/politica-de-privacidade/">Política de privacidade</a></li>
+            <li><a href="/termos-de-uso/">Termos de uso</a></li>
+            <li><a href="/excluir-conta/">Excluir conta</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="direitos">© <span data-ano>2026</span> Ubon</p>
+    </div>
+  </footer>
+</body>
+</html>
