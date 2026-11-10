@@ -5,7 +5,7 @@
 # O arquivo do app. Ele fica nos Releases do GitHub, porque o Cloudflare
 # Pages não aceita arquivo maior que 25 MB.
 # TROQUE SEU-USUARIO pelo seu nome de usuário do GitHub.
-/apk  https://github.com/SEU-USUARIO/ubon-site/releases/latest/download/Ubon.apk  302
+/apk  https://github.com/devpyrus/ubon-site/releases/latest/download/Ubon.apk  302
 
 # Endereços antigos dos botões de comprar (rodada 130). A compra agora
 # passa pelo programa do site (pasta functions); quem tiver o link antigo
