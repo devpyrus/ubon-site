@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ubon: saiba se a corrida vale a pena antes de aceitar</title>
+  <meta name="description" content="O Ubon lê a oferta da Uber e da 99 e mostra quanto ela paga por km e por hora, em verde, amarelo ou vermelho. E organiza ganhos, jornada e manutenção do carro, de graça.">
+  <link rel="canonical" href="https://ubon.pro/">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Ubon">
+  <meta property="og:title" content="Ubon: saiba se a corrida vale a pena antes de aceitar">
+  <meta property="og:description" content="O card do Ubon mostra, por cima da oferta da Uber e da 99, quanto ela paga por km e por hora.">
+  <meta property="og:url" content="https://ubon.pro/">
+  <meta property="og:image" content="https://ubon.pro/assets/compartilhar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/icone-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/icone-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/icone-180.png">
+  <link rel="preload" href="/assets/fontes/roboto-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fontes/roboto-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/estilo.css">
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <div class="container">
+      <a class="logo" href="/" aria-label="Ubon, página inicial"><img src="/assets/ubon-logo.png" alt="Ubon" width="192" height="96"></a>
+      <nav class="menu" aria-label="Principal">
+        <a class="so-no-largo" href="/#como-funciona">Como funciona</a>
+        <a class="so-no-largo" href="/#recursos">Recursos</a>
+        <a class="so-no-largo" href="/#duvidas">Dúvidas</a>
+        <a href="/planos/">Planos</a>
+        <a class="botao botao-principal botao-pequeno" href="/baixar/">Baixar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-texto">
+          <h1>Saiba se a corrida vale a pena antes de aceitar.</h1>
+          <p class="lead">O Ubon lê a oferta da Uber e da 99 e mostra, por cima dela, quanto ela paga por km e por hora, em verde, amarelo ou vermelho, com os limites que você escolheu.</p>
+          <div class="acoes">
+            <a class="botao botao-principal" href="/baixar/">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+              Baixar o Ubon
+            </a>
+            <a class="botao botao-secundario" href="/planos/">Ver os planos</a>
+          </div>
+          <p class="pequeno">Para Android 8 ou mais novo.</p>
+        </div>
+
+        <div class="demo">
+          <div class="celular" role="img" aria-label="Exemplo: oferta da 99 de R$ 23,40, 12,3 km e 21 minutos. O card mostra R$ 1,90 por km e R$ 66,86 por hora, com a borda verde: paga bem.">
+            <svg class="mapa" viewBox="0 0 330 682" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <rect width="330" height="682" fill="#141519"/>
+              <rect x="188" y="378" width="54" height="54" rx="6" fill="#13241A"/>
+              <rect x="118" y="88" width="54" height="54" rx="6" fill="#13241A"/>
+              <rect x="258" y="238" width="44" height="54" rx="6" fill="#13241A"/>
+              <g fill="none" stroke="#202228" stroke-width="7">
+                <path d="M40 0V682M110 0V682M180 0V682M250 0V682M310 0V682"/>
+                <path d="M0 80H330M0 150H330M0 230H330M0 300H330M0 370H330M0 440H330M0 510H330M0 590H330"/>
+              </g>
+              <path d="M-10 650L340 60" fill="none" stroke="#2A2C32" stroke-width="12"/>
+              <path class="rota ativa" d="M40 440V370H180V230H250V150"/>
+              <path class="rota" d="M250 510V440H110V300H180V230"/>
+              <path class="rota" d="M110 150V230H250V370H180V510"/>
+              <g class="ponto-da-rota ativo" data-exemplo="0">
+                <circle cx="40" cy="440" r="7" fill="#F2F3F5" stroke="#141519" stroke-width="3"/>
+                <rect x="243" y="143" width="14" height="14" rx="2" fill="#F2F3F5" stroke="#141519" stroke-width="3"/>
+              </g>
+              <g class="ponto-da-rota" data-exemplo="1">
+                <circle cx="250" cy="510" r="7" fill="#F2F3F5" stroke="#141519" stroke-width="3"/>
+                <rect x="173" y="223" width="14" height="14" rx="2" fill="#F2F3F5" stroke="#141519" stroke-width="3"/>
+              </g>
+              <g class="ponto-da-rota" data-exemplo="2">
+                <circle cx="110" cy="150" r="7" fill="#F2F3F5" stroke="#141519" stroke-width="3"/>
+                <rect x="173" y="503" width="14" height="14" rx="2" fill="#F2F3F5" stroke="#141519" stroke-width="3"/>
+              </g>
+            </svg>
+
+            <div class="barra-de-status" aria-hidden="true">
+              <span>18:42</span>
+              <svg viewBox="0 0 40 12" fill="#E6E6EA"><rect x="0" y="9" width="3" height="3" rx=".5"/><rect x="4.5" y="6.5" width="3" height="5.5" rx=".5"/><rect x="9" y="4" width="3" height="8" rx=".5"/><rect x="13.5" y="1" width="3" height="11" rx=".5"/><rect x="21" y="1.5" width="16" height="9" rx="2" fill="none" stroke="#E6E6EA" stroke-width="1.2"/><rect x="23" y="3.5" width="9" height="5" rx="1"/><rect x="37.6" y="4.5" width="1.6" height="3" rx=".5"/></svg>
+            </div>
+
+            <div class="card-ubon" id="card-ubon" style="--cor: #00E676" aria-hidden="true">
+              <div class="dentro">
+                <div class="linha-1">
+                  <span class="selo da-99" data-campo="selo">99</span>
+                  <span class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4.5 6H19.5A2 2 0 0 1 21.5 8V16A2 2 0 0 1 19.5 18H4.5A2 2 0 0 1 2.5 16V8A2 2 0 0 1 4.5 6Z"/><path d="M9.5 12a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0z"/><path d="M6 12h.01M18 12h.01"/></svg><span data-campo="valor">R$ 23.40</span></span>
+                  <span class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 21 9 3M19 21 15 3"/><path d="M12 4.5v2M12 10v3M12 16.5V20"/></svg><span data-campo="km">12.30 km</span></span>
+                  <span class="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g transform="translate(-3 .35)"><path d="M8.7 13a6.3 6.3 0 1 0 12.6 0a6.3 6.3 0 1 0-12.6 0z"/><path d="M15 10.7v2.6M13.7 4h2.6M19.6 7.4l1.3-1.3"/></g></svg><span data-campo="min">21 min</span></span>
+                </div>
+                <div class="linha-2">
+                  <div class="metrica">
+                    <div class="rotulo">R$/km</div>
+                    <div class="numero boa"><span data-campo="porKm">1.90</span></div>
+                  </div>
+                  <div class="metrica">
+                    <div class="rotulo">R$/hora</div>
+                    <div class="numero boa"><span data-campo="porHora">66.86</span></div>
+                  </div>
+                  <div class="metrica">
+                    <div class="rotulo">Nota <span class="estrela">★</span></div>
+                    <div class="numero boa"><span data-campo="nota">4.95</span><span class="sufixo" data-campo="corridas">(381)</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="folha-da-oferta" aria-hidden="true">
+              <div class="tracos"><span class="traco"></span><span class="traco"></span><span class="traco"></span></div>
+              <div class="aceitar">Aceitar</div>
+            </div>
+          </div>
+
+          <div class="legenda" role="group" aria-label="Ver um exemplo de oferta">
+            <button type="button" aria-pressed="true"><span class="ponto boa"></span>Paga bem</button>
+            <button type="button" aria-pressed="false"><span class="ponto media"></span>No limite</button>
+            <button type="button" aria-pressed="false"><span class="ponto ruim"></span>Abaixo do seu mínimo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="como-funciona" aria-labelledby="titulo-como-funciona">
+      <div class="container">
+        <div class="cabeca-da-secao">
+          <h2 id="titulo-como-funciona">A oferta chega, o card aparece</h2>
+          <p class="lead">Você continua trabalhando do mesmo jeito, na Uber e na 99. O Ubon observa a tela e faz as contas por você.</p>
+        </div>
+        <ol class="passos em-linha">
+          <li>
+            <h3>Ligue o copiloto</h3>
+            <p>Abra o Ubon e ligue o Copiloto Inteligente. Depois, é só abrir a Uber ou a 99.</p>
+          </li>
+          <li>
+            <h3>Chega uma oferta</h3>
+            <p>O Ubon lê o valor, a distância, o tempo e a nota do passageiro que aparecem na tela.</p>
+          </li>
+          <li>
+            <h3>O card aparece por cima</h3>
+            <p>Na hora, você vê o R$&nbsp;por&nbsp;km e o R$&nbsp;por&nbsp;hora, com a borda piscando na cor da corrida.</p>
+          </li>
+        </ol>
+        <p class="frase-de-fecho"><strong>Aceitar ou recusar continua com você.</strong> O Ubon não toca na tela e não aceita corrida sozinho.</p>
+      </div>
+    </section>
+
+    <section class="secao" id="limites" aria-labelledby="titulo-limites">
+      <div class="container">
+        <div class="cabeca-da-secao">
+          <h2 id="titulo-limites">Você decide o que é corrida boa</h2>
+          <p class="lead">Cada motorista tem a sua conta. No Semáforo de Valores, você diz até onde a corrida fica vermelha e a partir de onde ela fica verde. O Ubon já vem com estes limites:</p>
+        </div>
+        <div class="escalas">
+          <div class="escala">
+            <h3>R$ por km</h3>
+            <div class="trilho" aria-hidden="true"><span></span><span></span><span></span></div>
+            <dl class="marcas">
+              <div><dt>Vermelho</dt><dd>até 1,00</dd></div>
+              <div><dt>Amarelo</dt><dd>no meio</dd></div>
+              <div><dt>Verde</dt><dd>1,50 ou mais</dd></div>
+            </dl>
+          </div>
+          <div class="escala">
+            <h3>R$ por hora</h3>
+            <div class="trilho" aria-hidden="true"><span></span><span></span><span></span></div>
+            <dl class="marcas">
+              <div><dt>Vermelho</dt><dd>até 20,00</dd></div>
+              <div><dt>Amarelo</dt><dd>no meio</dd></div>
+              <div><dt>Verde</dt><dd>30,00 ou mais</dd></div>
+            </dl>
+          </div>
+          <div class="escala">
+            <h3>Nota do passageiro</h3>
+            <div class="trilho" aria-hidden="true"><span></span><span></span><span></span></div>
+            <dl class="marcas">
+              <div><dt>Vermelho</dt><dd>até 4,70</dd></div>
+              <div><dt>Amarelo</dt><dd>no meio</dd></div>
+              <div><dt>Verde</dt><dd>4,90 ou mais</dd></div>
+            </dl>
+          </div>
+        </div>
+        <p class="frase-de-fecho">A borda do card pisca na cor da <strong>pior das duas contas</strong>, R$&nbsp;por&nbsp;km ou R$&nbsp;por&nbsp;hora: se uma delas está ruim, a corrida não é boa. A nota do passageiro aparece no card, mas não muda a borda.</p>
+      </div>
+    </section>
+
+    <section class="secao" id="recursos" aria-labelledby="titulo-recursos">
+      <div class="container">
+        <div class="cabeca-da-secao">
+          <h2 id="titulo-recursos">O resto do trabalho, de graça</h2>
+          <p class="lead">Ganhos, gastos, tempo de trabalho e manutenção do carro, num lugar só.</p>
+        </div>
+
+        <div class="recursos">
+          <article class="recurso">
+            <div>
+              <h3>Quanto sobrou de verdade</h3>
+              <p>Anote ganhos e gastos em poucos toques, defina metas por dia, semana ou mês e acompanhe tudo em gráficos. Com o copiloto ligado, as corridas que você aceita entram sozinhas em Finanças.</p>
+            </div>
+            <div class="painel" role="img" aria-label="Exemplo de Finanças: saldo da semana de R$ 1.068,00, com R$ 1.480,00 de ganhos, R$ 412,00 de gastos e 82% da meta.">
+              <p class="titulo-do-painel">Saldo da semana</p>
+              <p class="grande">R$ 1.068,00</p>
+              <ul class="contas">
+                <li>
+                  <span>Ganhos</span><span class="valor">R$ 1.480,00</span>
+                  <span class="barrinha"><span style="width: 62%; background: #E6E6EA"></span><span style="width: 38%; background: #FFDD00"></span></span>
+                  <span class="detalhe"><i class="cor-uber"></i>Uber R$ 920,00 <i class="cor-99"></i>99 R$ 560,00</span>
+                </li>
+                <li>
+                  <span>Gastos</span><span class="valor">R$ 412,00</span>
+                  <span class="barrinha"><span style="width: 28%; background: #FF6E6E"></span></span>
+                </li>
+                <li>
+                  <span>Meta da semana</span><span class="valor">82%</span>
+                  <span class="barrinha"><span style="width: 82%; background: #00E676"></span></span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="recurso">
+            <div>
+              <h3>Pra onde foi o seu tempo</h3>
+              <p>No modo automático, o Ubon acompanha as fases na Uber e na 99: esperando corrida, indo buscar, esperando o passageiro e em viagem. No fim do dia, você vê quanto tempo passou em cada uma. Se preferir, use o modo manual, como um cronômetro.</p>
+            </div>
+            <div class="painel" role="img" aria-label="Exemplo de Jornada: 8 horas e 12 minutos no dia, sendo 4h 5min em viagem, 2h 13min aguardando viagens, 1h 20min buscando passageiro e 34 minutos aguardando passageiro.">
+              <p class="titulo-do-painel">Jornada de hoje</p>
+              <p class="grande">8h 12min</p>
+              <div class="fases">
+                <span style="flex: 245; background: #00E676"></span>
+                <span style="flex: 133; background: #FF1744"></span>
+                <span style="flex: 80; background: #FF9100"></span>
+                <span style="flex: 34; background: #2979FF"></span>
+              </div>
+              <ul class="legenda-das-fases">
+                <li><i style="background: #00E676"></i>Em viagem<b>4h 5min</b></li>
+                <li><i style="background: #FF1744"></i>Aguardando viagens<b>2h 13min</b></li>
+                <li><i style="background: #FF9100"></i>Buscando passageiro<b>1h 20min</b></li>
+                <li><i style="background: #2979FF"></i>Aguardando passageiro<b>34 min</b></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="recurso">
+            <div>
+              <h3>O carro em dia</h3>
+              <p>Anote abastecimentos e manutenções. O Ubon mostra quanto o combustível custa por km e avisa quando está chegando a troca de óleo, o rodízio dos pneus ou o vencimento da CNH, por km ou por data.</p>
+            </div>
+            <div class="painel" role="img" aria-label="Exemplo de lembretes: troca de óleo, faltam 820 km; rodízio dos pneus, faltam 4.300 km; vencimento da CNH, faltam 143 dias.">
+              <p class="titulo-do-painel">Lembretes</p>
+              <ul class="lembretes">
+                <li>
+                  <span>Troca de óleo</span><span class="quanto" style="color: #FFA726">Faltam 820 km</span>
+                  <span class="barrinha"><span style="width: 92%; background: #FFA726"></span></span>
+                </li>
+                <li>
+                  <span>Rodízio dos pneus</span><span class="quanto" style="color: #4CAF50">Faltam 4.300 km</span>
+                  <span class="barrinha"><span style="width: 57%; background: #4CAF50"></span></span>
+                </li>
+                <li>
+                  <span>Vencimento da CNH</span><span class="quanto" style="color: #4CAF50">Faltam 143 dias</span>
+                  <span class="barrinha"><span style="width: 61%; background: #4CAF50"></span></span>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <ul class="extras">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="17" height="7" rx="1.5"/></svg>
+            <p><strong>Widget na tela inicial.</strong> Ganhos, gastos, meta, jornada e corridas aceitas sem abrir o app.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>
+            <p><strong>Lembretes do dia.</strong> Às 15h, um “Rodou hoje?” se nada foi anotado. Às 21h, a hora de fechar o dia.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4M6 4.5h11l-2.5 4 2.5 4H6"/></svg>
+            <p><strong>Aviso de meta batida.</strong> O Ubon avisa quando você chega na meta do dia, da semana ou do mês.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 18.5h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.6 9.1a4.75 4.75 0 0 0 .9 9.4z"/></svg>
+            <p><strong>Tudo na sua conta Google.</strong> Trocou de celular? Entre com a mesma conta e os seus registros voltam.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao" id="gratis-e-pro" aria-labelledby="titulo-gratis-e-pro">
+      <div class="container">
+        <div class="cabeca-da-secao">
+          <h2 id="titulo-gratis-e-pro">O que é grátis e o que é Pro</h2>
+        </div>
+        <div class="lados">
+          <div class="lado">
+            <h3>Grátis</h3>
+            <p class="subtitulo">Sem prazo e sem cartão.</p>
+            <ul class="lista-com-marcas">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Finanças: ganhos, gastos, metas e gráficos</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Jornada, no automático ou no manual</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Abastecimentos e custo por km</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Manutenção, lembretes e CNH</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Widget e lembretes do dia</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Cópia dos registros na sua conta Google</li>
+            </ul>
+          </div>
+          <div class="lado pro">
+            <h3>Ubon Pro</h3>
+            <p class="subtitulo">O copiloto que lê as ofertas.</p>
+            <ul class="lista-com-marcas">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>O card por cima da oferta da Uber e da 99</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>R$ por km, R$ por hora e nota do passageiro</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Semáforo com os seus limites</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A voz que fala a oferta, se você quiser</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Histórico das ofertas e corridas aceitas direto em Finanças</li>
+            </ul>
+            <p class="preco-resumo">A partir de <b>R$ 8,33 por mês</b> no plano de 12 meses (R$&nbsp;99,99 de uma vez).</p>
+            <a class="botao botao-principal" href="/planos/">Ver os planos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="privacidade" aria-labelledby="titulo-privacidade">
+      <div class="container">
+        <div class="cabeca-da-secao">
+          <h2 id="titulo-privacidade">O Ubon só lê a tela</h2>
+          <p class="lead">Pra mostrar o card, ele precisa ler a oferta. É só isso que ele faz com a tela.</p>
+        </div>
+        <div class="faz-nao-faz">
+          <div>
+            <h3>O que ele faz</h3>
+            <ul class="lista-com-marcas">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Lê a oferta que aparece na tela da Uber e da 99</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Mostra o card por cima e, se você ligar, fala a oferta</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Guarda os seus registros no celular e numa área da nuvem que só a sua conta Google acessa</li>
+            </ul>
+          </div>
+          <div>
+            <h3>O que ele não faz</h3>
+            <ul class="lista-com-marcas nao">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>Não aceita nem recusa corrida por você</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>Não entra na sua conta da Uber nem da 99</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>Não usa GPS, câmera nem microfone</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>Não salva print da sua tela</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>Não vende os seus dados e não tem anúncio</li>
+            </ul>
+          </div>
+        </div>
+        <a class="ligacao" href="/politica-de-privacidade/">Ler a política de privacidade</a>
+      </div>
+    </section>
+
+    <section class="secao" id="duvidas" aria-labelledby="titulo-duvidas">
+      <div class="container">
+        <div class="cabeca-da-secao">
+          <h2 id="titulo-duvidas">Dúvidas</h2>
+        </div>
+        <div class="duvidas">
+          <details>
+            <summary>Funciona com quais apps?</summary>
+            <div><p>Com o Uber Driver e o 99 Motorista, no Android 8 ou mais novo.</p></div>
+          </details>
+          <details>
+            <summary>Funciona no iPhone?</summary>
+            <div><p>Não. O Ubon é só pra Android, porque o iPhone não deixa um app ler a tela de outro.</p></div>
+          </details>
+          <details>
+            <summary>Por que baixar pelo site e não pela Play Store?</summary>
+            <div>
+              <p>O Ubon está nos últimos testes da Google Play. Até ele chegar na loja, a instalação é pelo arquivo deste site. É o mesmo app que vai pra Play, assinado pelo mesmo desenvolvedor.</p>
+              <p>Quando ele chegar na Play, dá pra passar a atualizar por lá sem desinstalar. E os seus registros ficam guardados na sua conta Google de qualquer jeito.</p>
+            </div>
+          </details>
+          <details>
+            <summary>O Ubon aceita corrida sozinho?</summary>
+            <div><p>Não. Ele só mostra as contas. Aceitar ou recusar é sempre com você, no app da Uber ou da 99.</p></div>
+          </details>
+          <details>
+            <summary>Dá pra usar sem pagar?</summary>
+            <div><p>Dá. Finanças, Jornada, abastecimentos, manutenção e lembretes são grátis, sem prazo. Só o copiloto, que lê as ofertas e mostra o card, é do Ubon Pro.</p></div>
+          </details>
+          <details>
+            <summary>Como o Pro chega no meu celular?</summary>
+            <div>
+              <p>Na <a href="/planos/">página de planos</a>, cole o código da sua conta (no Ubon, em Conta → Ubon Pro, tem um botão de copiar) e pague no Pix ou no cartão. O Pro é liberado sozinho, em geral na hora.</p>
+              <p>Depois, abra o Ubon e vá em Conta → Ubon Pro: lá aparece até quando o seu plano vale.</p>
+            </div>
+          </details>
+          <details>
+            <summary>E se eu não gostar?</summary>
+            <div><p>Comprando pelo site, você tem 7 dias pra desistir e receber todo o dinheiro de volta. É só mandar um e-mail pra <a href="mailto:suporte.ubon@gmail.com">suporte.ubon@gmail.com</a>.</p></div>
+          </details>
+          <details>
+            <summary>O plano do site renova sozinho?</summary>
+            <div><p>Não. Você paga uma vez e o Pro vale 6 ou 12 meses. Quando acabar, é só comprar de novo se quiser continuar.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao chamada-final" aria-labelledby="titulo-chamada-final">
+      <div class="container">
+        <h2 id="titulo-chamada-final">Comece pela parte grátis</h2>
+        <p class="lead">Baixe o Ubon, organize ganhos, jornada e carro, e assine o Pro quando quiser o card.</p>
+        <div class="acoes">
+          <a class="botao botao-principal" href="/baixar/">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+            Baixar o Ubon
+          </a>
+          <a class="botao botao-secundario" href="/planos/">Ver os planos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <div class="colunas">
+        <div>
+          <a class="logo" href="/" aria-label="Ubon, página inicial"><img src="/assets/ubon-logo.png" alt="Ubon" width="192" height="96"></a>
+          <p class="aviso-de-marca">O Ubon não tem ligação com a Uber nem com a 99. Os nomes Uber e 99 são marcas dos seus donos e aparecem aqui só pra dizer com quais apps o Ubon funciona.</p>
+        </div>
+        <nav aria-labelledby="rodape-ubon">
+          <h2 id="rodape-ubon">Ubon</h2>
+          <ul>
+            <li><a href="/baixar/">Baixar</a></li>
+            <li><a href="/planos/">Planos</a></li>
+            <li><a href="/#duvidas">Dúvidas</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="rodape-ajuda">
+          <h2 id="rodape-ajuda">Ajuda</h2>
+          <ul>
+            <li><a href="mailto:suporte.ubon@gmail.com">suporte.ubon@gmail.com</a></li>
+            <li><a href="https://ig.me/m/ubon.pro" rel="noopener">Mensagem no Instagram</a></li>
+            <li><a href="/politica-de-privacidade/">Política de privacidade</a></li>
+            <li><a href="/termos-de-uso/">Termos de uso</a></li>
+            <li><a href="/excluir-conta/">Excluir conta</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="direitos">© <span data-ano>2026</span> Ubon</p>
+    </div>
+  </footer>
+</body>
+</html>

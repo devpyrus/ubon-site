@@ -1,0 +1,10 @@
+# Cabeçalhos de segurança do site do Ubon (lidos pelo Cloudflare Pages).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+
+# As letras nunca mudam: o navegador pode guardar por um ano.
+/assets/fontes/*
+  Cache-Control: public, max-age=31536000, immutable
