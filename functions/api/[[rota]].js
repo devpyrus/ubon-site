@@ -1,10 +1,11 @@
 /*
- * A COMPRA AUTOMÁTICA DO UBON PRO (rodada 131).
+ * A COMPRA AUTOMÁTICA DO UBON PRO (rodada 131) E O TESTE GRÁTIS (rodada 132).
  *
- * Roda no Cloudflare Pages (Functions), junto com o site. Três endereços:
+ * Roda no Cloudflare Pages (Functions), junto com o site. Quatro endereços:
  *   POST /api/comprar      a página de planos pede um link de pagamento;
  *   POST /api/infinitepay  a InfinitePay avisa que um pagamento foi feito;
- *   GET  /api/confirmar    a página "obrigado" pergunta se o Pro já foi liberado.
+ *   GET  /api/confirmar    a página "obrigado" pergunta se o Pro já foi liberado;
+ *   POST /api/teste        o app pede os 7 dias grátis de uma conta nova.
  *
  * O caminho de uma compra:
  *   1. a pessoa cola o código da conta (o uid do Firebase, que o app mostra em
@@ -36,9 +37,14 @@
  *     de diferença conta como a mesma): nada de Pro em dobro.
  */
 
+// Rodada 132: os quatro planos, com o preço de lançamento do site (o preço
+// "de" que a página mostra riscado é o da assinatura pela Google Play). A
+// letra vai dentro do número do pedido: a "t" já é do plano de teste.
 export const PLANOS = {
-  anual: { letra: "a", centavos: 9999, meses: 12, dias: 0, descricao: "Ubon Pro - 12 meses" },
-  semestral: { letra: "s", centavos: 5799, meses: 6, dias: 0, descricao: "Ubon Pro - 6 meses" },
+  mensal: { letra: "m", centavos: 569, meses: 1, dias: 0, descricao: "Ubon Pro - 1 mês" },
+  trimestral: { letra: "r", centavos: 1599, meses: 3, dias: 0, descricao: "Ubon Pro - 3 meses" },
+  semestral: { letra: "s", centavos: 2999, meses: 6, dias: 0, descricao: "Ubon Pro - 6 meses" },
+  anual: { letra: "a", centavos: 5669, meses: 12, dias: 0, descricao: "Ubon Pro - 12 meses" },
   teste: { letra: "t", centavos: 100, meses: 0, dias: 1, descricao: "Ubon Pro - teste de 1 dia" },
 };
 
@@ -304,11 +310,134 @@ export async function confirmar(request, env) {
   }
 }
 
+// ---------------------------------------------------------------- o teste grátis
+
+/*
+ * O TESTE GRÁTIS (rodada 132): toda conta nova ganha 7 dias de Pro, sem
+ * cartão, uma vez só.
+ *
+ * O app manda o "token" do login (o Firebase entrega um, assinado pelo
+ * Google, que diz qual conta é e vale 1 hora). Aqui ele é conferido com as
+ * chaves públicas do Google: ninguém consegue pedir o teste no lugar de
+ * outra conta, nem inventar uma conta. Depois, o RevenueCat diz se a conta
+ * já teve o Pro alguma vez (o direito "pro" fica lá mesmo vencido): se
+ * nunca teve, libera 7 dias. O limite de um teste por CELULAR é conferido
+ * no app, antes de pedir.
+ *
+ * O Firebase do Ubon é o projeto abaixo (está também no APK, não é segredo).
+ * Se um dia mudar, dá pra trocar sem mexer aqui: variável FIREBASE_PROJECT_ID.
+ */
+const FIREBASE_DO_UBON = "copiloto-motorista-a2";
+const DIAS_DE_TESTE = 7;
+const DIA_MS = 24 * 60 * 60 * 1000;
+const CHAVES_DO_GOOGLE =
+  "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com";
+const FOLGA_DO_RELOGIO_S = 300;
+
+let chavesGuardadas = null; // { ate: ms, porKid: { kid: CryptoKey } }
+
+function bytesDoBase64Url(texto) {
+  const base64 = texto.replace(/-/g, "+").replace(/_/g, "/");
+  const binario = atob(base64 + "===".slice((base64.length + 3) % 4));
+  return Uint8Array.from(binario, (c) => c.charCodeAt(0));
+}
+
+function jsonDoBase64Url(texto) {
+  return JSON.parse(new TextDecoder().decode(bytesDoBase64Url(texto)));
+}
+
+/** As chaves públicas do Google pros tokens do Firebase (guardadas pelo tempo que o Google manda). */
+async function chavesDoGoogle(agora, deNovo = false) {
+  if (!deNovo && chavesGuardadas && chavesGuardadas.ate > agora) return chavesGuardadas.porKid;
+  const resposta = await fetch(CHAVES_DO_GOOGLE);
+  if (!resposta.ok) throw new ErroDeFora("chaves do Google: " + resposta.status);
+  const dados = await resposta.json();
+  const porKid = {};
+  for (const jwk of dados?.keys || []) {
+    if (jwk.kty !== "RSA" || typeof jwk.kid !== "string" || !jwk.n || !jwk.e) continue;
+    porKid[jwk.kid] = await crypto.subtle.importKey(
+      "jwk",
+      { kty: "RSA", n: jwk.n, e: jwk.e, alg: "RS256", ext: true },
+      { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+      false,
+      ["verify"]
+    );
+  }
+  const idade = /max-age=(\d+)/.exec(resposta.headers.get("Cache-Control") || "");
+  chavesGuardadas = { ate: agora + (idade ? Number(idade[1]) * 1000 : 60 * 60 * 1000), porKid };
+  return porKid;
+}
+
+/** Confere o token do login do Firebase. Devolve o código da conta (uid) ou null. */
+export async function contaDoToken(token, projeto, agora = Date.now()) {
+  if (typeof token !== "string" || token.length > 4096) return null;
+  const partes = token.split(".");
+  if (partes.length !== 3) return null;
+  let cabecalho;
+  let dados;
+  try {
+    cabecalho = jsonDoBase64Url(partes[0]);
+    dados = jsonDoBase64Url(partes[1]);
+  } catch {
+    return null;
+  }
+  const s = Math.floor(agora / 1000);
+  if (cabecalho?.alg !== "RS256" || typeof cabecalho.kid !== "string") return null;
+  if (dados?.aud !== projeto || dados?.iss !== "https://securetoken.google.com/" + projeto) return null;
+  if (typeof dados.exp !== "number" || dados.exp <= s - FOLGA_DO_RELOGIO_S) return null;
+  if (typeof dados.iat !== "number" || dados.iat > s + FOLGA_DO_RELOGIO_S) return null;
+  if (typeof dados.auth_time === "number" && dados.auth_time > s + FOLGA_DO_RELOGIO_S) return null;
+  if (typeof dados.sub !== "string" || dados.sub.length === 0 || dados.sub.length > 128) return null;
+
+  let chave = (await chavesDoGoogle(agora))[cabecalho.kid];
+  // O Google troca as chaves de tempos em tempos: kid desconhecido = buscar de novo, uma vez.
+  if (!chave) chave = (await chavesDoGoogle(agora, true))[cabecalho.kid];
+  if (!chave) return null;
+  let assinatura;
+  try {
+    assinatura = bytesDoBase64Url(partes[2]);
+  } catch {
+    return null;
+  }
+  const ok = await crypto.subtle.verify(
+    "RSASSA-PKCS1-v1_5",
+    chave,
+    assinatura,
+    new TextEncoder().encode(partes[0] + "." + partes[1])
+  );
+  return ok ? dados.sub : null;
+}
+
+/**
+ * POST /api/teste (Authorization: Bearer <token do Firebase>)
+ *   → { status: "liberado", ate } | { status: "ja_usou" } | { status: "invalido" } (401)
+ */
+export async function testeGratis(request, env, agora = Date.now()) {
+  try {
+    const autorizacao = request.headers.get("Authorization") || "";
+    const token = autorizacao.startsWith("Bearer ") ? autorizacao.slice(7).trim() : "";
+    const conta = await contaDoToken(token, env.FIREBASE_PROJECT_ID || FIREBASE_DO_UBON, agora);
+    if (!conta || !codigoValido(conta)) return json({ status: "invalido" }, 401);
+
+    // null = nunca teve o Pro. Qualquer outra resposta (vencido, ativo, sem fim) = já usou.
+    if ((await validadeAtual(env, conta)) !== null) return json({ status: "ja_usou" });
+
+    const fimMs = agora + DIAS_DE_TESTE * DIA_MS;
+    await liberarPro(env, conta, fimMs);
+    console.log(`teste grátis: conta=${conta} ate=${new Date(fimMs).toISOString()}`);
+    return json({ status: "liberado", ate: new Date(fimMs).toISOString() });
+  } catch (e) {
+    console.error("teste grátis:", e && e.message);
+    return json({ status: "erro" }, e instanceof ErroDeConfiguracao ? 500 : 502);
+  }
+}
+
 export async function onRequest(context) {
   const { request, env, params } = context;
   const rota = Array.isArray(params.rota) ? params.rota.join("/") : String(params.rota || "");
   if (rota === "comprar" && request.method === "POST") return comprar(request, env);
   if (rota === "infinitepay" && request.method === "POST") return avisoDaInfinitePay(request, env);
   if (rota === "confirmar" && request.method === "GET") return confirmar(request, env);
+  if (rota === "teste" && request.method === "POST") return testeGratis(request, env);
   return json({ erro: "nao encontrado" }, 404);
 }

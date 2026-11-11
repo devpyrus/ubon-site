@@ -43,11 +43,11 @@
     <div class="container">
       <header class="pagina-topo">
         <h1>Política de privacidade</h1>
-        <p class="data">Revisada em 8 de novembro de 2026</p>
+        <p class="data">Revisada em 10 de novembro de 2026</p>
       </header>
       <article class="texto-legal">
         <h2>Resumo em uma frase</h2>
-        <p>O Ubon funciona no seu celular. Os seus dados ficam no aparelho e numa área privada da nuvem, ligada à sua conta Google, que só você acessa. Nada é vendido, nada vira anúncio e nada é compartilhado com Uber, 99 ou qualquer outra empresa. As exceções: a frase falada por uma voz HD, que é opcional (veja Notificação por voz), as estatísticas de uso que a leitura das letras manda pro Google (veja Leitura da tela) e, se você comprar o Ubon Pro, o que a assinatura e o pagamento precisam (veja Ubon Pro).</p>
+        <p>O Ubon funciona no seu celular. Os seus dados ficam no aparelho e numa área privada da nuvem, ligada à sua conta Google, que só você acessa. Nada é vendido, nada vira anúncio e nada é compartilhado com Uber, 99 ou qualquer outra empresa. As exceções: a frase falada por uma voz HD, que é opcional (veja Notificação por voz), as estatísticas de uso que a leitura das letras manda pro Google (veja Leitura da tela) e o que o teste grátis, a assinatura e o pagamento do Ubon Pro precisam (veja Ubon Pro).</p>
         <h2>Leitura da tela</h2>
         <p>Pra mostrar o card com R$/km e R$/hora, o app precisa ler a oferta que aparece na tela. Ele faz isso de duas formas: lendo o texto que o Android disponibiliza e, quando isso não basta, tirando uma foto da tela e lendo as letras dela.</p>
         <p>Sobre a foto da tela: ela NÃO é salva. A imagem chega na memória do app, é lida na hora e descartada em seguida. Não vira arquivo, não vai pra galeria e não é enviada pra internet — a leitura das letras acontece dentro do próprio celular. A leitura das letras é feita pelo ML Kit, uma biblioteca do Google que roda no próprio celular: a imagem e o texto lido não saem do aparelho, mas a biblioteca manda pro Google estatísticas de uso e desempenho (modelo do celular, versão do Android, quanto tempo a leitura levou e um número da instalação do app), sem a imagem e sem o texto.</p>
@@ -80,7 +80,8 @@
         <p>Pela Google Play, o pagamento é feito e guardado pela Google, com as regras dela.</p>
         <p>Se você comprar o Pro fora da Google Play, o pagamento é feito numa plataforma de pagamento, que recebe os dados dele (como nome, e-mail, CPF e os dados do Pix ou do cartão) e cuida deles com a política dela. Junto com o pedido vai o código da sua conta (o número da conta no Firebase), pra o Pro ser liberado sozinho na conta certa. O Ubon recebe da plataforma a confirmação do pagamento, o plano, o valor e os dados de contato que você informar, e guarda o registro da venda pelo tempo que a lei pede.</p>
         <p>Em nenhum dos casos o Ubon vê o número do seu cartão.</p>
-        <p>Teste grátis: pra os 7 dias grátis valerem uma vez só por celular, quando uma conta começa o teste, a nuvem guarda um código embaralhado do celular (não dá pra voltar dele pro número original) junto com o número dessa conta. Ele serve só pra isso.</p>
+        <p>Teste grátis: toda conta nova ganha 7 dias de Pro, sem cartão. Pra liberar, o app manda pro servidor do Ubon o comprovante do seu login, um código assinado pelo Google que diz qual é a sua conta (ele traz o número da conta e também o nome e o e-mail da conta Google, mas nunca a senha). O servidor usa só o número da conta: confere no RevenueCat se ela já teve o Pro alguma vez e, se nunca teve, libera os 7 dias. O comprovante não é guardado.</p>
+        <p>Pra o teste valer uma vez só por celular, quando uma conta começa o teste, a nuvem guarda um código embaralhado do celular (não dá pra voltar dele pro número original) junto com o número dessa conta. Ele serve só pra isso.</p>
         <h2>O que o app NÃO faz</h2>
         <p>Não grava áudio nem vídeo. Não usa a câmera. Não salva print das suas corridas. Não usa o GPS nem acompanha onde você está (os únicos endereços que vão pra nuvem são os das corridas que você aceitou, como explicado acima). Não tem anúncios. Não vende seus dados nem compartilha com mais ninguém além do que está explicado acima. Não se conecta às contas da Uber ou da 99 — ele só lê o que está na tela, como você mesmo lê.</p>
         <h2>Permissões e por quê</h2>
@@ -88,8 +89,8 @@
           <li><strong>Acessibilidade:</strong> ler a oferta na tela e mostrar o card por cima.</li>
           <li><strong>Sobrepor outros apps:</strong> desenhar o card.</li>
           <li><strong>Ignorar otimização de bateria:</strong> o Android não desligar a leitura no meio do dia.</li>
-          <li><strong>Notificações:</strong> avisar a oferta, avisar se a leitura cair, o aviso de meta batida e os lembretes do dia (“Rodou hoje?” à tarde e “Hora de fechar o dia” à noite). Os lembretes só olham o que já está no celular — nada é enviado pra isso.</li>
-          <li><strong>Iniciar com o celular:</strong> marcar de novo os lembretes do dia depois que o celular religa ou o app é atualizado.</li>
+          <li><strong>Notificações:</strong> avisar a oferta, avisar se a leitura cair, o aviso de meta batida, os lembretes do dia (“Rodou hoje?” à tarde e “Hora de fechar o dia” à noite) e os avisos de que o teste grátis ou o Ubon Pro está acabando (3 dias antes, na véspera e quando acaba). Os lembretes só olham o que já está no celular — nada é enviado pra isso.</li>
+          <li><strong>Iniciar com o celular:</strong> marcar de novo os lembretes do dia e os avisos do Pro depois que o celular religa ou o app é atualizado.</li>
         </ul>
         <p>Qualquer uma pode ser desligada nas configurações do Android a qualquer momento. Sem elas, a parte do copiloto para de funcionar; o controle financeiro continua.</p>
         <h2>Apagar seus dados</h2>

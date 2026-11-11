@@ -1289,15 +1289,25 @@ h3 {
 
 /* Planos */
 
+/* Rodada 132: quatro planos. Uma coluna no celular, duas no tablet e
+   quatro no computador. A etiqueta do destaque fica em cima da borda, pra
+   os preços dos quatro ficarem na mesma altura. */
 .planos {
   display: grid;
   gap: 20px;
+  margin-top: 14px;
 }
 
 @media (min-width: 760px) {
   .planos {
     grid-template-columns: 1fr 1fr;
-    max-width: 880px;
+    gap: 28px 20px;
+  }
+}
+
+@media (min-width: 1060px) {
+  .planos {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -1318,8 +1328,9 @@ h3 {
 }
 
 .plano .etiqueta {
-  justify-self: start;
-  margin-bottom: 8px;
+  position: absolute;
+  top: -13px;
+  left: clamp(24px, 3vw, 32px);
   padding: 4px 10px;
   border-radius: 999px;
   background: var(--verde);
@@ -1348,6 +1359,39 @@ h3 {
 .plano .por-mes {
   color: var(--verde);
   font-weight: 500;
+}
+
+/* O preço "de", riscado, e o desconto (rodada 132). */
+.plano .preco-de {
+  margin-top: 10px;
+  color: var(--cinza);
+  font-size: 1rem;
+}
+
+.plano .preco-de s {
+  text-decoration-thickness: 1.5px;
+}
+
+.plano .preco-de + .preco {
+  margin-top: 2px;
+}
+
+.plano .desconto {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(0, 230, 118, 0.14);
+  color: var(--verde);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+
+.nota-dos-precos {
+  margin-top: 16px;
+  color: var(--texto-2);
+  font-size: 0.875rem;
 }
 
 .plano .condicoes {
